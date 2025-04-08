@@ -9,22 +9,25 @@
 
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int left, right;
+	int left = 0, right = 0;
 	int max = 0;
 
 	if (tree == NULL)
 	{
-		return (-1);
+		return (0);
 	}
 
-	left = binary_tree_balance(tree->left);
-	right = binary_tree_balance(tree->right);
-	max = left - right;
-
-	if (left == -1 || right == -1 || (max > 1))
+	if (tree->left != NULL)
 	{
-		return (max);
+		left = binary_tree_balance(tree->left) + 1;
 	}
+
+	if (tree->right != NULL)
+	{
+		right = binary_tree_balance(tree->right) + 1;
+	}
+
+	max = left - right;
 
 	return (max);
 }
