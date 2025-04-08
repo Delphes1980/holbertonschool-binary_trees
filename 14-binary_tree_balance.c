@@ -21,5 +21,10 @@ int binary_tree_balance(const binary_tree_t *tree)
 	right = binary_tree_balance(tree->right);
 	max = left - right;
 
+	if (left == -1 || right == -1 || (max > 1))
+	{
+		return (max);
+	}
+
 	return (max);
 }
